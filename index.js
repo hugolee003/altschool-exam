@@ -3,6 +3,20 @@ const express = require('express');
 // building an express app
 const app = express();
 
+// setting up middleware
+app.use((req, res, next) => {
+    console.log('New request made');
+    console.log('host:', req.hostname);
+    console.log('path:', req.path);
+    console.log('method:', req.method);
+    next();
+});
+
+app.use((req, res, next) => {
+    console.log('In the next Middleware');
+    next();
+});
+
 // register view engine
 app.set('view engine', 'ejs'); 
 
@@ -11,6 +25,7 @@ app.listen(3000, () => {
     console.log(`listening on port: 3000`);
 })
 
+// routes
 app.get('/', (req, res) => {
     const blogs = [
         {title: 'How to use chrome developer tools', snippet: 'lorem ipsum dolor sit amet, consectetur'},
