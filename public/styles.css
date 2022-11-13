@@ -1,12 +1,4 @@
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ugochukwu's Blog | <%= title %></title>
-    <link rel="stylesheet" href="public/styles.css">
-
-    <style>
-       /* google fonts */
+ /* google fonts */
  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
  body{
@@ -65,6 +57,12 @@
    border-radius: 10px;
    background: white;
  }
+
+ hr{
+    opacity: 30%;
+    color: #fafafa;
+ }
+
  input{
    padding: 10px 5px;
    border-radius: 4px;
@@ -143,11 +141,12 @@
    width: 360px;
  }
 
- 
+ .recipe img{
+   width: 100px;
+   margin: -30px auto 20px;
+ }
  footer{
    text-align: center;
    margin-top: 120px;
    color: #aaa;
  }
-   </style>
-</head>

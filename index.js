@@ -1,21 +1,9 @@
 const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
 
 // building an express app
 const app = express();
-
-// setting up middleware
-app.use((req, res, next) => {
-    console.log('New request made');
-    console.log('host:', req.hostname);
-    console.log('path:', req.path);
-    console.log('method:', req.method);
-    next();
-});
-
-app.use((req, res, next) => {
-    console.log('In the next Middleware');
-    next();
-});
 
 // register view engine
 app.set('view engine', 'ejs'); 
@@ -24,6 +12,10 @@ app.set('view engine', 'ejs');
 app.listen(3000, () => {
     console.log(`listening on port: 3000`);
 })
+
+// setting up middleware with morgan and static files
+app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(morgan('dev'));
 
 // routes
 app.get('/', (req, res) => {
@@ -47,3 +39,5 @@ app.get('/blogs/create', (req, res) => {
 app.use((req, res) => {
     res.status(404).render('404', { title: ' 404 '});
 });
+
+app.disable('etag');
